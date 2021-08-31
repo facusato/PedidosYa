@@ -1,0 +1,62 @@
+<head>
+     <link rel="stylesheet" href="/css/estilos.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+     <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="py-2" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                </a>
+               <a class="py-2 d-md-inline-block" href="/client">Adm.Clientes</a> 
+            </div>
+        </nav>
+        
+        <h2>Agregar Cliente</h2>
+<div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
+        <form action="#" th:action="@{/client/create}" th:object="${client}" method="post">
+            
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name"  value="" th:field="*{name}" placeholder="Escribi tu nombre..." required/>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+             <div class="form-group">
+                <label for="surname">Apellido</label>
+                <input type="text" class="form-control" name="surname"  value="" th:field="*{surname}" placeholder="Escribi tu apellido..." required/>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateBirth">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" name="dateBirth"  value="" th:field="*{dateBirth}" placeholder="Escribi tu Fecha de Nacimiento..." required/>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" class="form-control" name="dni"  value="" th:field="*{dni}" pattern="[0-9]{8}" placeholder="Escribi tu DNI..." required/>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Mail</label>
+                <input type="email" class="form-control" name="mail"  value="" th:field="*{mail}" placeholder="Escribi tu mail..." required/>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+          
+            
+            <br>
+            <button type="submit" class="btn btn-success">
+                <i class="far fa-plus-square fa-lg mr-2"></i>
+                Agregar Cliente
+            </button>
+            <a href="/client" class="btn btn-primary">
+                Volver al panel de Cliente
+            </a>
+
+
+        </form>
+        </div>

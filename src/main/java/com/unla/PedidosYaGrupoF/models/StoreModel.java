@@ -3,7 +3,7 @@ package com.unla.PedidosYaGrupoF.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.unla.PedidosYaGrupoF.entities.Food;
+import com.unla.PedidosYaGrupoF.entities.Product;
 
 public class StoreModel{
 	private long idStore;
@@ -12,7 +12,7 @@ public class StoreModel{
 	private double latitude;
 	private double longitude;
 	private double distance;
-	private Set<Food> foods = new HashSet<Food>();
+	private Set<Product> products = new HashSet<Product>();
 
 	public StoreModel () {}
 	
@@ -72,12 +72,12 @@ public class StoreModel{
 		this.distance = distance;
 	}
 
-	public Set<Food> getFoods() {
-		return foods;
+	public Set<Product> getProducts() {
+		return products;
 	}
 
-	public void setFoods(Set<Food> foods) {
-		this.foods = foods;
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class StoreModel{
 		long temp;
 		temp = Double.doubleToLongBits(distance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((foods == null) ? 0 : foods.hashCode());
+		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + (int) (idStore ^ (idStore >>> 32));
 		temp = Double.doubleToLongBits(latitude);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -114,10 +114,10 @@ public class StoreModel{
 			return false;
 		if (Double.doubleToLongBits(distance) != Double.doubleToLongBits(other.distance))
 			return false;
-		if (foods == null) {
-			if (other.foods != null)
+		if (products == null) {
+			if (other.products != null)
 				return false;
-		} else if (!foods.equals(other.foods))
+		} else if (!products.equals(other.products))
 			return false;
 		if (idStore != other.idStore)
 			return false;

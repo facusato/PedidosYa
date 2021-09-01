@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.sun.istack.Nullable;
+//import com.sun.istack.Nullable;
 
 
 @Entity
@@ -24,9 +24,9 @@ public class Pedido {
 	@Column(name="quantity")
 	private int quantity;
 	
-	/*
+	
 	@OneToOne(cascade=CascadeType.MERGE)
-	private Product product;*/
+	private Product product;
 	
 	@OneToOne
 	private Store store;
@@ -44,10 +44,10 @@ public class Pedido {
 	
 	public Pedido() {}
 	
-	public Pedido(long idPedido,int quantity,Store store,LocalDate date,double subtotal,boolean accept,Client client) {
+	public Pedido(long idPedido,int quantity,Product product,Store store,LocalDate date,double subtotal,boolean accept,Client client) {
 		this.idPedido=idPedido;
 		this.quantity=quantity;
-		//this.product=product;
+		this.product=product;
 		this.store=store;
 		this.date=date;
 		this.subtotal=subtotal;
@@ -55,9 +55,9 @@ public class Pedido {
 		this.client=client;
 	}
 	
-	public Pedido(int quantity,Store store,LocalDate date,double subtotal,boolean accept,Client client) {
+	public Pedido(int quantity,Product product,Store store,LocalDate date,double subtotal,boolean accept,Client client) {
 		this.quantity=quantity;
-		//this.product=product;
+		this.product=product;
 		this.store=store;
 		this.subtotal=subtotal;
 		this.date=date;
@@ -80,7 +80,7 @@ public class Pedido {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-/*
+
 	public Product getProduct() {
 		return product;
 	}
@@ -88,7 +88,7 @@ public class Pedido {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-*/
+
 	public Store getStore() {
 		return store;
 	}

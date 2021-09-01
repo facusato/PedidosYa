@@ -40,7 +40,7 @@ public class Store {
 	private double distance;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
-	private Set<Food> foods = new HashSet<Food>();
+	private Set<Product> products = new HashSet<Product>();
 	
 	
 	public Store() {}
@@ -103,12 +103,12 @@ public class Store {
 	}
 	
 
-	public Set<Food> getFoods() {
-		return foods;
+	public Set<Product> getProducts() {
+		return products;
 	}
 
-	public void setFoods(Set<Food> foods) {
-		this.foods = foods;
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	public static double distanciaCoord(double lat1, double lng1, double lat2, double lng2) {

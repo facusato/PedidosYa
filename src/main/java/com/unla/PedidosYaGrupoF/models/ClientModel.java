@@ -2,7 +2,6 @@ package com.unla.PedidosYaGrupoF.models;
 
 import java.time.LocalDate;
 
-import com.unla.PedidosYaGrupoF.models.PersonModel;
 
 public class ClientModel extends PersonModel {
 

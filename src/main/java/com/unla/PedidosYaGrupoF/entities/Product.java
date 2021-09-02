@@ -89,7 +89,4 @@ public class Product {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	
-	
-
 }

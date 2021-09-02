@@ -1,0 +1,97 @@
+<html>
+<head>
+<link rel="stylesheet" href="/css/estilos.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="site-header sticky-top py-1">
+		<div
+			class="container d-flex flex-column flex-md-row justify-content-between">
+			<a class="py-2" href="/"> <svg xmlns="http://www.w3.org/2000/svg"
+					width="24" height="24" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round"
+					stroke-linejoin="round" class="d-block mx-auto">
+					<circle cx="12" cy="12" r="10"></circle>
+					<line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+					<line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+					<line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+					<line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+					<line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+					<line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+			</a> 
+			<a class="py-2 d-md-inline-block" href="/client">Adm.Clientes</a> 
+              
+                 
+                      <a aria-expanded="false"
+						aria-haspopup="true" class="nav-link dropdown-toggle"
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog">User<span th:text="${username}" />
+					   </a>					
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer" type="submit" value="Logout" />
+							</form>
+                        </div>
+                       
+               
+		</div>
+	</nav>
+	<h2>Actualizaci&oacute;n de Lotes</h2>
+
+	<div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
+  
+       <form action="#" th:action="@{/batch/update}" th:object="${batch}"
+			method="post">
+			<input type="hidden" th:field="*{idBatch}" th:value="*{idBatch}" />
+
+			<div class="form-group">
+				<label for="quantity">Cantidad Inicial</label> <input type="text"
+					class="form-control" name="quantity" value="" th:field="*{quantity}"
+					placeholder="Escribi la cantidad..." />
+			</div>
+
+			<div class="form-group">
+				<label for="quantities">CantidadTotal</label> <input type="text"
+					class="form-control" name="quantities" th:field="*{quantities}"
+					placeholder="Escribi la cantidad total..." />
+			</div>
+			
+			<div class="form-group">
+                <label for="date">Fecha de Ingreso</label>
+                <input type="date" class="form-control" name="date"  value="" th:field="*{date}" placeholder="Escribi la fecha de ingreso..." >
+            </div>
+
+			<div class="form-group">
+				<label for="product">Producto</label> 
+				<select placeholder="product" th:field="*{product.idProduct}">
+	            <option th:each="p : ${products}" th:value="${p.idProduct}" th:text="${p.name}"></option>
+	             </select>
+            </div>
+            
+             <div class="form-group">
+                <label for="store">Local</label>
+                <select placeholder="store" th:field="*{store.idStore}">
+	            <option th:each="s : ${stores}" th:value="${s.idStore}" th:text="${s.address}"></option>
+	             </select>     
+            </div>
+            
+            
+           <div class="form-group">
+            <strong>Activo</strong>
+            <input type="checkbox" th:field="*{active}" />
+           </div>
+           <div>
+				<input class="btn btn-warning float-left" type="submit" value="Editar Lote" />
+		</form>
+		<form action="#" th:action="@{/batch/delete/{id}(id=${batch.idBatch})}"
+			method="post">
+			
+			<input class="btn btn-danger float-left ml-3" type="submit" value="Borrar Lote" />
+		</form>
+	</div>
+</body>
+
+</html>

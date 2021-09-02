@@ -15,6 +15,7 @@ public class ProductModel {
 	private String pic;
 	
 	
+	
 	public ProductModel() {}
 	
 	public ProductModel(long idProduct,String name,String description,double price,String pic) {
@@ -23,6 +24,7 @@ public class ProductModel {
 		this.description=description;
 		this.price=price;
 		this.pic=pic;
+	
 	}
 
 	public long getIdProduct() {
@@ -65,6 +67,7 @@ public class ProductModel {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
+	
 	
 
 }

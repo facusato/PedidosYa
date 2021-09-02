@@ -1,9 +1,9 @@
 package com.unla.PedidosYaGrupoF.models;
 
 import java.util.HashSet;
-import java.util.Set;
 
-import com.unla.PedidosYaGrupoF.entities.Product;
+import java.util.Set;
+import com.unla.PedidosYaGrupoF.entities.Batch;
 
 public class StoreModel{
 	private long idStore;
@@ -11,8 +11,8 @@ public class StoreModel{
 	private String address;
 	private double latitude;
 	private double longitude;
+	private Set<Batch> batches = new HashSet<Batch>();
 	private double distance;
-	private Set<Product> products = new HashSet<Product>();
 
 	public StoreModel () {}
 	
@@ -64,6 +64,14 @@ public class StoreModel{
 		this.longitude = longitude;
 	}
 
+	public Set<Batch> getBatches() {
+		return batches;
+	}
+
+	public void setBatches(Set<Batch> batches) {
+		this.batches = batches;
+	}
+
 	public double getDistance() {
 		return distance;
 	}
@@ -72,23 +80,15 @@ public class StoreModel{
 		this.distance = distance;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((batches == null) ? 0 : batches.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(distance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + (int) (idStore ^ (idStore >>> 32));
 		temp = Double.doubleToLongBits(latitude);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -112,12 +112,12 @@ public class StoreModel{
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (Double.doubleToLongBits(distance) != Double.doubleToLongBits(other.distance))
-			return false;
-		if (products == null) {
-			if (other.products != null)
+		if (batches == null) {
+			if (other.batches != null)
 				return false;
-		} else if (!products.equals(other.products))
+		} else if (!batches.equals(other.batches))
+			return false;
+		if (Double.doubleToLongBits(distance) != Double.doubleToLongBits(other.distance))
 			return false;
 		if (idStore != other.idStore)
 			return false;
@@ -130,4 +130,8 @@ public class StoreModel{
 		return true;
 	}
 
+	
+	
+	
 }
+

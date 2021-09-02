@@ -28,8 +28,6 @@ public interface IPedidoService {
 
 	public void setAttributes(PedidoModel pedidoModel);
 
-//	public void paySalary(EmployeeModel employeeModel,EmployeeModel collaborator,ProductModel productModel,int quantity);
-
 	public List<BatchModel> getActiveBatches(StoreModel storeModel, ProductModel productModel);
 
 	public int calculateStock(StoreModel storeModel, ProductModel productModel);
@@ -40,7 +38,6 @@ public interface IPedidoService {
 
 	public void setAttributeRequest(PedidoModel pedidoModel, StoreModel storeModel);
 
-//	public List<EmployeeModel> paySalary(int month, int year);
 
 	public List<PedidoModel> getAllsP(ClientModel clientModel);
 

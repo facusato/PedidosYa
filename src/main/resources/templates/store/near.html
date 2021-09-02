@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
 <link rel="stylesheet" href="/css/estilos.css">
@@ -11,9 +10,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 </head>
-
-
-
 <!-- Navigation -->
 <nav class="site-header sticky-top py-1">
 	<div
@@ -32,56 +28,31 @@
 		        </a> 
 		        <a class="py-2 d-md-inline-block" href="/client">Adm.Clientes</a> 
                
-                <li class="py-2 d-md-inline-block">
-                      <a aria-expanded="false"
-						aria-haspopup="true" class="nav-link dropdown-toggle"
-						data-toggle="dropdown" href="#" id="navbarDropdownBlog">User<span th:text="${username}" />
-					   </a>					
-						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
-							<form th:action="@{/logout}" method="post">
-								<input class="dropdown-item" style="cursor: pointer" type="submit" value="Logout" />
-							</form>
-                        </div>
-                       </li> 
-                
 	</div>
 </nav>
 
-<h2>Administraci&oacute;n de Locales</h2>
+<h2>Locales Cercanos</h2>
 <table class="table table-bordered table-stripped table-hover table-sm">
-
-
 	<thead class="thead-dark">
 		<tr>
 			<th>Tel&eacute;fono</th>
 			<th>Direcci&oacute;n</th>
-			<th>Latitud</th>
-			<th>Longitud</th>
-			<th>
-			<th colspan="2" class="text-center">
-			<a href="/store/new" class="btn btn-outline-light px-4"> 
-			<i class="far fa-plus-square fa-lg mr-2"></i> Agregar
-			</a></th>
-			
+			<th>Distancia</th>
 		</tr>
+		</thead>
 	<tbody>
 		<tr th:each="store : ${stores}">
 			<td><span th:text="${store.phone}" /></td>
 			<td><span th:text="${store.address}" /></td>
-			<td><span th:text="${store.latitude}" /></td>
-			<td><span th:text="${store.longitude}" /></td>
-			
-			<td><a th:href="@{/store/{idStore}(idStore=${store.idStore})}"
-				class="btn btn-info px-4"><i
-					class="far fa-edit fa-lg mr-1"></i> Ver lotes</a></td>
-			<td><a th:href="@{/store/consultNearby{idStore}(idStore=${store.idStore})}"
-				class="btn btn-info px-6"><i
-					class="far fa-edit fa-lg mr-1"></i> Ver locales cercanos</a></td>		
+			<td><span th:text="${store.distance}" /></td>
 		</tr>
 	</tbody>
 	
 </table>
-         
+<a href="/store" class="btn btn-primary">
+                 Volver al panel de Locales
+            </a>
+          
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 	crossorigin="anonymous"></script>

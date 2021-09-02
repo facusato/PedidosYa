@@ -1,0 +1,76 @@
+<head>
+     <link rel="stylesheet" href="/css/estilos.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+     <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <a class="py-2" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                </a> 
+                
+              
+            </div>
+        </nav>
+        
+        <h2>Agregar Pedido</h2>
+<div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
+        <form action="#" th:action="@{/pedido/create}" th:object="${pedido}" method="post">
+        
+        <div class="form-group">
+                <label for="client">Cliente</label>
+                <select placeholder="client" th:field="*{client.id}">
+	            <option th:each="c : ${clients}" th:value="${c.id}" th:text="${c.name} +' ' +${c.surname}"></option>
+	             </select>     
+            </div>
+        
+            
+            <div class="form-group">
+                <label for="quantity">Cantidad</label>
+                <input type="number" min="1" class="form-control" name="quantity"  value="" th:field="*{quantity}" placeholder="Escribi la cantidad..." required>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="store">Local</label>
+                <select placeholder="store" th:field="*{store.idStore}">
+	            <option th:each="s : ${stores}" th:value="${s.idStore}" th:text="${s.address}"></option>
+	             </select>     
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="product">Producto</label>
+                <select placeholder="product" th:field="*{product.idProduct}">
+	            <option th:each="p : ${products}" th:value="${p.idProduct}" th:text="${p.name}"></option>
+	             </select>     
+            </div>
+           
+            
+            <div class="form-group">
+                <label for="date">Fecha</label>
+                <input type="date" class="form-control" name="date"  value="" th:field="*{date}" placeholder="Elija una fecha..." required>
+                <div class="invalid-feedback"></div>
+            </div>
+            
+            
+            <div class="form-group">
+            <strong>Condici&oacute;n</strong>
+            <input type="checkbox" th:field="*{accept}" />
+            </div>
+            
+          
+            <br>
+           
+            <button type="submit" class="btn btn-success">
+                <i class="far fa-plus-square fa-lg mr-2"></i>
+                Agregar Pedido
+            </button>
+            <a href="/pedido" class="btn btn-primary">
+                 Volver al panel de Pedidos
+            </a>
+            
+        </form>
+        </div>
+    

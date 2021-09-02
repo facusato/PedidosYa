@@ -1,14 +1,9 @@
 package com.unla.PedidosYaGrupoF.services.implementation;
 
 //import java.time.LocalDate;
-
-
-
-
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Comparator;
-
+import java.util.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -66,7 +61,7 @@ public class StoreService  implements IStoreService{
 		return storeConverter.entityToModel(storeRepository.findByIdStore(idStore));
 	}
 	
-	/*@Override
+	@Override
 	public List<StoreModel> getNearestStore(StoreModel storeModel) {
 		List<StoreModel> stores = new ArrayList<StoreModel>();
 		for (Store store : storeRepository.findAll()) {
@@ -79,7 +74,7 @@ public class StoreService  implements IStoreService{
 		}
 		stores.sort(Comparator.comparing(StoreModel::getDistance));
 		return stores;
-	}*/
+	}
 	
 	/*
 	

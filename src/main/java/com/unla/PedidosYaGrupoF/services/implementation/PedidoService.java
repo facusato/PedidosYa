@@ -42,10 +42,6 @@ public class PedidoService implements IPedidoService{
 	@Qualifier("storeService")
 	private IStoreService storeService;
 	
-	/*@Autowired
-	@Qualifier("employeeService")
-	private IEmployeeService employeeService;*/
-	
 	@Autowired
 	@Qualifier("clientService")
 	private IClientService clientService;
@@ -184,21 +180,7 @@ public class PedidoService implements IPedidoService{
 			}
 			
 		}
-	/*
-	@Override
-	public void paySalary(EmployeeModel employeeModel,EmployeeModel collaborator,ProductModel productModel, int quantity) {
-		double subtotal=productService.findByIdProduct(productModel.getIdProduct()).getPrice()*quantity;
-		if(employeeModel.getDni()==collaborator.getDni()) {
-		employeeModel.setCommission(employeeModel.getCommission()+subtotal*0.05);
-		}
-		else{
-			employeeModel.setCommission(employeeModel.getCommission()+subtotal*0.03);
-			collaborator.setCommission(collaborator.getCommission()+subtotal*0.02);
-			employeeService.insertOrUpdate(collaborator);
-		}
-		employeeService.insertOrUpdate(employeeModel);
-		
-	}
+/*
 	
 	@Override
 	public List<RankingProductModel> rankingProduct(List<Pedido> pedidos){
@@ -221,36 +203,9 @@ public class PedidoService implements IPedidoService{
 		return rankingProd;
 	}	
 	
-	@Override
-	public List<EmployeeModel> paySalary(int month,int year){
-		List<EmployeeModel> salaryEmployees=new ArrayList<EmployeeModel>();
-		List<EmployeeModel> listSalary=employeeService.getAllv();
-		double commission=0;
-		for(EmployeeModel e:listSalary) {
-			e.setCommission(0);
-			e.setFullSalary(e.getBasicSalary());
-		}
-		
-		for(EmployeeModel e:listSalary) {
-		   for(PedidoModel p:this.getAlls()) {
-			  if(p.isAccept() && p.getDate().getMonthValue()==month && p.getDate().getYear()==year) {
-				if(p.getCollaborator().getDni()==p.getEmployee().getDni() && p.getEmployee().getDni()==e.getDni()) {
-					commission=p.getSubtotal()*0.05;
-			     }else if(p.getCollaborator().getDni()!=p.getEmployee().getDni() && e.getDni()==p.getEmployee().getDni()) {
-					      commission=p.getSubtotal()*0.03;
-			            }else if(p.getCollaborator().getDni()!=p.getEmployee().getDni() && e.getDni()==p.getCollaborator().getDni())
-				                  commission=p.getSubtotal()*0.02;
-		      }
-	          e.setCommission(e.getCommission()+commission);
-	          commission=0;
-	        }
-		   e.setFullSalary(e.getFullSalary()+e.getCommission());
-		   salaryEmployees.add(e);
-		}
-		return salaryEmployees;   
-	}
-	
 	*/
+	
+	
 	@Override
 	public List<PedidoModel> getAllsP(ClientModel clientModel) {
 		List<PedidoModel> models = new ArrayList<PedidoModel>();

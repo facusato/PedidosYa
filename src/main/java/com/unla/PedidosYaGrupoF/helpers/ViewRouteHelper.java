@@ -44,7 +44,13 @@ public class ViewRouteHelper {
 		public final static String STORE_INDEX="store/index";
 		public final static String STORE_NEW="store/new";
 		public final static String STORE_UPDATE="store/update";
+		public final static String STORE_NEAR="store/near";
 		
+	// PEDIDOS	
+		
+		public final static String PEDIDO_INDEX = "pedido/index";
+		public final static String PEDIDO_NEW = "pedido/new";
+		public final static String PEDIDO_UPDATE = "pedido/update";
 		
 		
 		
@@ -55,5 +61,6 @@ public class ViewRouteHelper {
 		public final static String PRODUCT_ROOT = "/product";
 		public final static String BATCH_ROOT = "/batch";	
 		public final static String STORE_ROOT = "/store";
+		public final static String PEDIDO_ROOT = "/pedido";
 	
 }

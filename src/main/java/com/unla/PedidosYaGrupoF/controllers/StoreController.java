@@ -68,14 +68,14 @@ public class StoreController {
 		return mV;
 	}
 	
-/*	
+
 	@GetMapping("/consultNearby{idStore}")
 	public ModelAndView consultNearby(@PathVariable("idStore") long idStore) {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.STORE_NEAR);
 		StoreModel storeModel=storeService.findByIdStore(idStore);
 		mV.addObject("stores", storeService.getNearestStore(storeModel));
 		return mV;
-	}*/
+	}
 	
 	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/update")

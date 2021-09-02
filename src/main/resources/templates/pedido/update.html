@@ -1,0 +1,83 @@
+<html>
+<head>
+<link rel="stylesheet" href="/css/estilos.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="site-header sticky-top py-1">
+		<div
+			class="container d-flex flex-column flex-md-row justify-content-between">
+			<a class="py-2" href="/"> <svg xmlns="http://www.w3.org/2000/svg"
+					width="24" height="24" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round"
+					stroke-linejoin="round" class="d-block mx-auto">
+					<circle cx="12" cy="12" r="10"></circle>
+					<line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+					<line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+					<line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+					<line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+					<line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+					<line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+			</a> 
+                
+		</div>
+	</nav>
+	<h2>Actualizaci&oacute;n de Pedidos</h2>
+
+	<div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
+  
+       <form action="#" th:action="@{/pedido/update}" th:object="${pedido}"
+			method="post">
+			<input type="hidden" th:field="*{idPedido}" th:value="*{idPedido}" />
+			
+			<div class="form-group">
+                <label for="client">Cliente</label>
+                <select placeholder="client" th:field="*{client.id}">
+	            <option th:each="c : ${clients}" th:value="${c.id}" th:text="${c.name} +' ' +${c.surname}"></option>
+	             </select>     
+            </div>
+
+			<div class="form-group">
+				<label for="quantity">Cantidad</label> 
+				<input type="number" min="1" class="form-control" name="quantity" value="quantity" th:field="*{quantity}" readonly/>
+					
+			</div>
+
+			<div class="form-group">
+				<label for="product">Producto</label> 
+				<select placeholder="product" th:field="*{product.idProduct}">
+	            <option th:each="p : ${products}" th:value="${p.idProduct}" th:text="${p.description}"></option>
+	             </select>
+            </div>
+           
+            
+            <div class="form-group">
+                <label for="date">Fecha</label>
+                <input type="date" class="form-control" name="date"  value="" th:field="*{date}" placeholder="Elija una fecha..." required>
+                <div class="invalid-feedback"></div>
+            </div>
+           
+              
+		    <div class="form-group">
+            <strong>Condici&oacute;n</strong>
+            <input type="checkbox" th:field="*{accept}" />
+           </div>
+           
+            
+             <div th:if="${not pedido.accept}" class="text-center">
+            <input class="btn btn-warning float-left" type="submit" value="Solicitar Stock" />
+             </div>
+		</form>
+	 <form action="#" th:action="@{/pedido/delete/{id}(id=${pedido.idPedido})}"
+			    method="post">
+			
+			<input class="btn btn-danger float-left" type="submit" value="Borrar Pedido" />
+     </form>
+	</div>
+</body>
+
+</html>

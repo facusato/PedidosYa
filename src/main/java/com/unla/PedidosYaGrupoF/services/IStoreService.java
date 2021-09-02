@@ -23,7 +23,7 @@ public interface IStoreService {
 	
 	public boolean remove(long idStore);
 
-	//public List<StoreModel> getNearestStore(StoreModel storeModel);
+	public List<StoreModel> getNearestStore(StoreModel storeModel);
 
 	//public List<ProductModel> soldProductsBetweenDates(StoreModel store, LocalDate since, LocalDate until);
 

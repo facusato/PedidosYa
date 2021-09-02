@@ -1,0 +1,86 @@
+<head>
+<link rel="stylesheet" href="/css/estilos.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<!-- Navigation -->
+<nav class="site-header sticky-top py-1">
+	<div
+		class="container d-flex flex-column flex-md-row justify-content-between">
+		<a class="py-2" href="/"> <svg xmlns="http://www.w3.org/2000/svg"
+				width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round"
+				stroke-linejoin="round" class="d-block mx-auto">
+				<circle cx="12" cy="12" r="10"></circle>
+				<line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+				<line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+				<line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+				<line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+				<line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+				<line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+		       </a> 
+		        <a class="py-2 d-md-inline-block" href="/client">Adm.Clientes</a> 
+              
+                <li class="py-2 d-md-inline-block">
+                      <a aria-expanded="false"
+						aria-haspopup="true" class="nav-link dropdown-toggle"
+						data-toggle="dropdown" href="#" id="navbarDropdownBlog">User<span th:text="${username}" />
+					   </a>					
+						<div aria-labelledby="navbarDropdownBlog" class="dropdown-menu dropdown-menu-right">
+							<form th:action="@{/logout}" method="post">
+								<input class="dropdown-item" style="cursor: pointer" type="submit" value="Logout" />
+							</form>
+                        </div>
+                       </li> 
+                
+	</div>
+</nav>
+
+
+<h2>Agregar Local</h2>
+<div class="card bg-light col-md-7 mt-5 p-3 mx-auto">
+
+	<form action="#" th:action="@{/store/create}" th:object="${store}"
+		method="post">
+<div class="form-group">
+			<label for="phone">Tel&eacute;fono</label> 
+			<input type="text" class="form-control" name="phone" value="" th:field="*{phone}" placeholder="Escribi el tel&eacute;fono"required/>
+				<div class="invalid-feedback"></div>
+		   </div>
+		   <label for="name">Ubicaci&oacute;n:</label>
+		    <div class="form-group">
+			 <label for="address">Direcci&oacute;n</label> 
+			 <input type="text" class="form-control" name="address" th:field="*{address}" placeholder="Escribi la direcci&oacute;n..." required/>
+				<div class="invalid-feedback"></div>
+		   </div>
+		   <div class="form-group">
+			<label for="latitude">Latitud</label> 
+			<input type="number" step="any" class="form-control" name="latitude"  value="" th:field="*{latitude}" placeholder="Escribi la latitud..." required/>
+				<div class="invalid-feedback"></div>
+		    </div>
+		    <div class="form-group">
+			<label for="longitude">Longitud</label> 
+			<input type="number" step="any" class="form-control" name="longitude" value="" th:field="*{longitude}" placeholder="Escribi la longitud..." required/>
+				<div class="invalid-feedback"></div>
+		    </div>        
+		<br>
+		 <button type="submit" class="btn btn-success px-4">
+                <i class="far fa-plus-square fa-lg mr-2"></i>
+                Agregar Local
+            </button>
+            
+		 <a href="/store" class="btn btn-primary ml-3">
+                Volver al panel de Locales
+            </a>
+       
+            
+	</form>
+</div>
+
+

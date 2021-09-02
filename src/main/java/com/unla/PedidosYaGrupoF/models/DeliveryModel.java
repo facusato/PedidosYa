@@ -2,16 +2,20 @@ package com.unla.PedidosYaGrupoF.models;
 
 import java.time.LocalDate;
 
+
 public class DeliveryModel extends PersonModel {
-	
-	
+
 	private int horaIngreso;
 	private int horaEgreso;
 	
-	public DeliveryModel(long id, String name,String surname,LocalDate dateBirth,long dni,int horaIngreso,int horaEgreso) {
+public DeliveryModel() {}
+	
+	public DeliveryModel(long id,String name,String surname,LocalDate dateBirth,long dni,int horaIngreso,int horaEgreso) {
 		super(id,name,surname,dateBirth,dni);
 		this.horaIngreso=horaIngreso;
 		this.horaEgreso=horaEgreso;
+		
+		
 	}
 
 	public int getHoraIngreso() {
@@ -29,7 +33,9 @@ public class DeliveryModel extends PersonModel {
 	public void setHoraEgreso(int horaEgreso) {
 		this.horaEgreso = horaEgreso;
 	}
+	
 
+	
 	
 	
 }

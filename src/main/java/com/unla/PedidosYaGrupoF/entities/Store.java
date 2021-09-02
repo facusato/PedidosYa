@@ -1,19 +1,16 @@
 package com.unla.PedidosYaGrupoF.entities;
 
 import javax.persistence.GeneratedValue;
+
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
-
-
 
 
 @Entity
@@ -39,8 +36,9 @@ public class Store {
 	@Column(name="distance")
 	private double distance;
 	
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="store")
-	private Set<Product> products = new HashSet<Product>();
+	private Set<Batch> batches = new HashSet<Batch>();
 	
 	
 	public Store() {}
@@ -60,6 +58,7 @@ public class Store {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		
+
 	}
 	
 	public long getIdStore() {
@@ -102,14 +101,14 @@ public class Store {
 		this.longitude = longitude;
 	}
 	
-
-	public Set<Product> getProducts() {
-		return products;
+	public Set<Batch> getBatches() {
+		return batches;
 	}
 
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setBatches(Set<Batch> batches) {
+		this.batches = batches;
 	}
+	
 
 	public static double distanciaCoord(double lat1, double lng1, double lat2, double lng2) {
 		double radioTierra = 6371;

@@ -11,3 +11,8 @@ spring:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false
+    
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB  

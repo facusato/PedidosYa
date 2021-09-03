@@ -1,5 +1,10 @@
 package com.unla.PedidosYaGrupoF.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -43,7 +50,26 @@ public class ProductController {
 	}
 	
 	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("product") ProductModel productModel) {
+	public RedirectView create(@ModelAttribute("product") ProductModel productModel,
+			@RequestParam("file") MultipartFile imagen) {
+		
+		if(!imagen.isEmpty()) {
+			
+			Path directorioImagenes=Paths.get("src//main//resources//static//assets");
+			String rutaAbsoluta=directorioImagenes.toFile().getAbsolutePath();
+			
+			try {
+				byte[] bytesImg=imagen.getBytes();
+				Path rutaCompleta=Paths.get(rutaAbsoluta+"//"+imagen.getOriginalFilename());
+				Files.write(rutaCompleta,bytesImg);
+				productModel.setPic(imagen.getOriginalFilename());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
 		productService.insertOrUpdate(productModel);
 		return new RedirectView(ViewRouteHelper.PRODUCT_ROOT);
 	}
@@ -53,6 +79,13 @@ public class ProductController {
 	@GetMapping("/{idProduct}")
 	public ModelAndView get(@PathVariable("idProduct") int idProduct) {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.PRODUCT_UPDATE);
+		mV.addObject("product", productService.findByIdProduct(idProduct));
+		return mV;
+	}
+	
+	@GetMapping("/detalle/{idProduct}")
+	public ModelAndView getDetalle(@PathVariable("idProduct") int idProduct) {
+		ModelAndView mV = new ModelAndView(ViewRouteHelper.PRODUCT_DETAIL);
 		mV.addObject("product", productService.findByIdProduct(idProduct));
 		return mV;
 	}

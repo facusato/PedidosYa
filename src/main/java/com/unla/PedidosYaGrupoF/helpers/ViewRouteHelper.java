@@ -39,6 +39,7 @@ public class ViewRouteHelper {
 		public final static String PRODUCT_INDEX = "product/index";
 		public final static String PRODUCT_NEW = "product/new";
 		public final static String PRODUCT_UPDATE = "product/update";	
+		public final static String PRODUCT_DETAIL = "product/detail";
 		
 	// LOCALES
 		public final static String STORE_INDEX="store/index";

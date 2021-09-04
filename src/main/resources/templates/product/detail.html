@@ -35,14 +35,12 @@
        <div class="card bg-light">
  		 <div class="card-header bg-dark text-white" th:text=${titulo}></div>
  		 <div class="card-body">
-  		  <img class="img-thumbnail rounded float-left"
-  		   th:src="@{'/assets/'+{product.pic}}"
-  		   th:alt="${product.pic}"
-  		   style="max-width: 25%;">
+ 		 
+  		  <img class="img-thumbnail rounded float-left" th:src="@{'/assets/'+ ${product.pic}}"  th:alt="${product.pic}"  style="max-width: 25%;">
   		   
   		   <ul class="list-group">
-  		   	<li class="list-group-item" th:text="'NOMBRE DEL PRODUCTO' + ${product.name}"></li>
-  		   	<li class="list-group-item" th:text="'DESCRIPCION DEL PRODUCTO' + ${product.description}"></li>
+  		   	<li class="list-group-item" th:text="'NOMBRE DEL PRODUCTO: '+'' + ${product.name}"></li>
+  		   	<li class="list-group-item" th:text="'DESCRIPCION DEL PRODUCTO: '+'' + ${product.description}"></li>
   		   </ul>
   		  
  	 </div>

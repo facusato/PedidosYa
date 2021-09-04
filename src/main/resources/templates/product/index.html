@@ -51,7 +51,12 @@
 			<td>
                         <a th:href="@{/product/{idProduct}(idProduct=${product.idProduct})}" class="btn btn-info px-4">
                             <i class="far fa-edit fa-lg mr-1"></i>
-                            Ver
+                            Actualizar
+                        </a>
+                        
+                         <a th:href="@{/product/detalle/{idProduct}(idProduct=${product.idProduct})}" class="btn btn-info px-6">
+                            <i class="far fa-edit fa-lg mr-1"></i>
+                            Ver detalle
                         </a>
                     </td>
 		</tr>
